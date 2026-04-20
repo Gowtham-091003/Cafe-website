@@ -1,7 +1,12 @@
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from "lucide-react";
+import { Page } from "../App";
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate: (page: Page) => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
   return (
     <footer id="visit" className="bg-coffee-dark border-t border-coffee-latte/20 pt-24 pb-12 relative overflow-hidden">
       {/* Decorative gradient */}
@@ -10,20 +15,38 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-12 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
           <div className="lg:col-span-1">
-            <a href="#" className="flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 border-2 border-coffee-latte rounded-full flex items-center justify-center">
-                <span className="serif text-xl font-bold text-coffee-latte">G</span>
+            <button 
+              onClick={() => onNavigate("home")} 
+              className="flex items-center gap-4 mb-10 group"
+            >
+              <div className="w-14 h-14 bg-coffee-latte rounded-full flex items-center justify-center p-1.5 shadow-lg shadow-coffee-latte/5 transition-transform duration-300 group-hover:scale-110">
+                <img 
+                  src="https://i.ibb.co/2Ys8Y1zp/Gowtham-Cafe-Project.webp" 
+                  alt="Gowtham Cafe Logo" 
+                  className="w-full h-full object-contain mix-blend-multiply"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <span className="serif text-2xl font-bold tracking-tight uppercase text-paper">
-                Gowtham Cafe
+              <span className="serif text-2xl font-bold tracking-tight uppercase text-paper leading-none text-left">
+                Gowtham <br /> <span className="text-coffee-latte">Cafe</span>
               </span>
-            </a>
+            </button>
             <p className="text-paper/50 leading-relaxed mb-10 italic font-light text-sm">
               Cultivating moments of stillness and connection through artisanal roasts and mindful hospitality.
             </p>
             <div className="flex gap-4">
-              {[Instagram, Facebook, Twitter].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-coffee-latte/20 flex items-center justify-center text-paper/60 hover:bg-coffee-latte hover:text-coffee-dark transition-all duration-300">
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/gowtham_adhii/" },
+                { Icon: Facebook, href: "https://www.facebook.com/agilan.gowtham.3/" },
+                { Icon: Twitter, href: "#" }
+              ].map(({ Icon, href }, i) => (
+                <a 
+                  key={i} 
+                  href={href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-coffee-latte/20 flex items-center justify-center text-paper/60 hover:bg-coffee-latte hover:text-coffee-dark transition-all duration-300"
+                >
                   <Icon size={16} />
                 </a>
               ))}
@@ -61,16 +84,25 @@ export default function Footer() {
           <div>
             <h4 className="serif text-xl text-paper mb-10 italic">Say Hello</h4>
             <div className="space-y-8">
-              <a href="mailto:hello@gowthamcafe.com" className="flex items-center gap-4 text-paper/60 hover:text-coffee-latte transition-colors group">
+              <a href="mailto:ganeshgowtham983@gmail.com" className="flex items-center gap-4 text-paper/60 hover:text-coffee-latte transition-colors group">
                 <Mail size={16} className="group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-light">hello@gowthamcafe.com</span>
+                <span className="text-sm font-light">ganeshgowtham983@gmail.com</span>
               </a>
-              <div className="flex items-center gap-4 text-paper/60 group">
+              <a href="tel:+918248904345" className="flex items-center gap-4 text-paper/60 hover:text-coffee-latte transition-colors group">
+                <Phone size={16} className="group-hover:scale-110 transition-transform" />
+                <span className="text-sm font-light">+91 82489 04345</span>
+              </a>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=30+Katchery+Street,+Parangipettai,+Cuddalore+District" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-4 text-paper/60 hover:text-coffee-latte transition-colors group"
+              >
                 <MapPin size={16} className="group-hover:scale-110 transition-transform" />
                 <div className="text-sm font-light leading-relaxed">
-                  124 Coffee Lane, <br /> Downtown Metropolis
+                  30 Katchery Street, Parangipettai, <br /> Cuddalore District
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -80,8 +112,8 @@ export default function Footer() {
             © 2024 GOWTHAMCAFE • ALL RIGHTS RESERVED
           </p>
           <div className="flex gap-10 text-[10px] text-paper/30 uppercase tracking-[0.3em]">
-            <a href="#" className="hover:text-coffee-latte transition-colors">Spotify</a>
-            <a href="#" className="hover:text-coffee-latte transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/gowtham_adhii/" target="_blank" rel="noopener noreferrer" className="hover:text-coffee-latte transition-colors">Instagram</a>
+            <a href="https://www.facebook.com/agilan.gowtham.3/" target="_blank" rel="noopener noreferrer" className="hover:text-coffee-latte transition-colors">Facebook</a>
             <a href="#" className="hover:text-coffee-latte transition-colors">Twitter</a>
           </div>
         </div>
