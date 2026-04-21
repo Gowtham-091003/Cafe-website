@@ -12,6 +12,7 @@ import Journal from "./components/Journal";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Chatbot from "./components/Chatbot";
 import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
 
 export type Page = "home" | "about" | "contact";
@@ -104,6 +105,7 @@ export default function App() {
       </AnimatePresence>
 
       <Footer onNavigate={navigateTo} />
+      <Chatbot />
     </div>
   );
 }
